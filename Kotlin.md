@@ -527,6 +527,13 @@ fun main() {
 }
 ```
 
+### lateinit:
+
+- private val lateinit
+  - wenn schon am anfang klar ist, das die Variable erst später initialisiert wird
+
+
+
 Java und Kotlin 
 
 

@@ -91,3 +91,9 @@ $$
 ### Im Text Referenzen:
 
 [Headers](https://support.typora.io/Markdown-Reference/#headers)
+
+# DiesDas:
+- Code Frances: ```Sprache-Code```
+- Inhaltsverzeichnis: `(TOC)` Alle Header werden eingefügt
+- Tasks: - [ ]
+- Tabellen: |item|Qty|Price| |
