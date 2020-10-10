@@ -367,7 +367,7 @@
               <RouterPage pageComponent={<FavPage />} path="/FavPage"/>
             </App>
           </Router>
-      
+        
       ```
 
 
@@ -632,8 +632,6 @@
 
   - 
 
-
-
 # Ternary Operator:
 
 - The *Java* *ternary operator* functions like a simplified [Java if](http://tutorials.jenkov.com/java/if.html) statement. The ternary operator consists of a condition that evaluates to either `true` or `false`, plus a value that is returned if the condition is `true` and another value that is returned if the condition is `false`. Here is a simple Java ternary operator example:
@@ -649,6 +647,90 @@
          <br />
        </div>
      ) : null;
+  ```
+
+
+# Redux
+
+- central datastor for all app data
+- can be accessed by every component to get date
+- akes state management easy
+
+![Bildschirmfoto 2020-10-07 um 17.41.52](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/Bildschirmfoto 2020-10-07 um 17.41.52.png)
+
+- Centra so every component gets easy acess
+
+![Bildschirmfoto 2020-10-07 um 17.43.07](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/Bildschirmfoto 2020-10-07 um 17.43.07.png)
+
+-  component witch wants access data subscribes to changes to the data and redux passes that data in **props**
+- there is a process for changes:
+  -  decide to make a change
+  - dispatch an action - actions describe the changes we like to make (**eg addpost**)
+  - with the action we can pass an optional **payload** - **payload** is any kind of data we want to pass with (**e.g the new post**)
+  - This actions is passed to a **reducer** - reducer takes the actions, looks at its type a know that is is a addpost action - he now goes to the center **store** the state and I gonna update it - **the reduces updates the state**  n**ot the component itself** - 
+
+- the reducer is a function that interactions with the store to change the state/date inside of it
+- the store is like a warehouse and the reducer is like a robot, who is the only one going inside the warehouse
+
+[https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.0-rc.1/redux.js](https://www.youtube.com/redirect?redir_token=QUFFLUhqa3pCRlFFMGE5bXBQdUNOTWJRd043Z19UUlFkQXxBQ3Jtc0ttQldEekc4amlWT05LclpjTktDSFFUVXI3TUN5WWVzVzZuTF9ESXV6SDgyTFY3cktLbXVieF9FdVJOdmFvc18yZkNTV19RbVFoWE1sVUpYWWg2YjdjUUVXVWs5TjVZVUI0aG9qQ3h4OVlRX0NZZHFSYw%3D%3D&stzid=Ugx6kyGouuJV0DOHyB54AaABAg&q=https%3A%2F%2Fcdnjs.cloudflare.com%2Fajax%2Flibs%2Fredux%2F4.0.0-rc.1%2Fredux.js&event=comments)
+
+- ``` javascript
+  // 1. holen von redux
+  const {createStore} = Redux;
+  
+   // 4.erstellen eines anfangsstatus, in diesem fall leer
+  const initState = {
+    todos: [ ],
+    posts: [ ]
+  }
+  
+  //3.unsere Reducer-Function hat immer einen State(gleich unserme anfangsstate) und eine action
+  function myReducer (state = initState, action) {
+    
+    //7.check what type of action we get an than do it
+    if (action.type == `ADD_TODO` ) {
+      //8.return new objekt that repesents the new state of the store
+      return {
+        //9.update todos - create new array
+        //spreat ... states of todo, to to get individual states, add new elements(e.g Buy Milk)
+        //we also need to pass the stuff we dont want to change, else we only get the store and not the              post
+        //todos: [ ... state.todos,action.todo]
+      //  posts: [ ], // could do that but if we have more stuff it gets to much to ride we else could use the spreat operator of the state with grap everything of the current state and than override the todos agaien
+        ...state,
+        todos: [ ... state.todos,action.todo]
+      }
+    } 
+  }
+  
+  //2.unser Store wo alle daten sind und dem der reducer übergeben wir, damit der reducer zugang auf die daten hat
+  const store = createStore(myReducer);
+  
+  //10.listen for changes in the store and than react to those changes
+  //funktion mit funtion als parpameter
+  //function fires everxtime a state is changes
+  //momentan wollen wir jedesmal wenn das passiert nur was ausgeben
+  store.subscribe(() => {
+    console.log("state updated")
+    //get the state
+    console.log(store.getState())
+  })
+  //5.unsere action mit der payload für die Daten
+  //adding a new todo
+  //const todoAction = { type: `ADD_TODO`, todo: `Buy Milk`}
+  
+  const todoAction = { type: `ADD_TODO`, todo: `Sleep More`}
+  const todoAction = { type: `ADD_TODO`, post: `Egg hunt with Yoshi`}
+  
+  
+  
+  
+  
+  
+  //6.dispatch the action: take store us dispatch-Method and in it pass die action
+  store.dispatch(todoAction)
+  
+  
+  
   ```
 
 - 
