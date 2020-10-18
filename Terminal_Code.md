@@ -24,3 +24,9 @@
 
 - Staten:  docker-compose -f local.yml up   
 - Ende: gr. C
+
+### Skript ausführbar machen:
+
+im richtigen Pfad:
+
+- Sudo chmod +x nameDerFile
