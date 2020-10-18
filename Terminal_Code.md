@@ -25,6 +25,18 @@
 - Staten:  docker-compose -f local.yml up   
 - Ende: gr. C
 
+### Femsense
+
+- npx cap copy
+
+- npx cap open [ios | android]
+
+- npm run build
+
+- ```
+  server: {"url": " http://192.168.0.24:3000"}
+  ```
+
 ### Skript ausführbar machen:
 
 im richtigen Pfad:
