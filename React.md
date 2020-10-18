@@ -652,6 +652,8 @@
 
 # Redux
 
+-  npm i redux 
+- Npm i react-redux
 - central datastor for all app data
 - can be accessed by every component to get date
 - akes state management easy
@@ -662,13 +664,13 @@
 
 ![Bildschirmfoto 2020-10-07 um 17.43.07](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/Bildschirmfoto 2020-10-07 um 17.43.07.png)
 
+-  Create store in index.js
 -  component witch wants access data subscribes to changes to the data and redux passes that data in **props**
 - there is a process for changes:
   -  decide to make a change
   - dispatch an action - actions describe the changes we like to make (**eg addpost**)
   - with the action we can pass an optional **payload** - **payload** is any kind of data we want to pass with (**e.g the new post**)
   - This actions is passed to a **reducer** - reducer takes the actions, looks at its type a know that is is a addpost action - he now goes to the center **store** the state and I gonna update it - **the reduces updates the state**  n**ot the component itself** - 
-
 - the reducer is a function that interactions with the store to change the state/date inside of it
 - the store is like a warehouse and the reducer is like a robot, who is the only one going inside the warehouse
 
@@ -700,6 +702,14 @@
         todos: [ ... state.todos,action.todo]
       }
     } 
+    //same for posts
+    
+    if(action.type == "ADD_POST") {
+      return {
+        ...state,
+        posts: [...state.posts, action.post]
+      }
+    }
   }
   
   //2.unser Store wo alle daten sind und dem der reducer übergeben wir, damit der reducer zugang auf die daten hat
@@ -719,20 +729,17 @@
   //const todoAction = { type: `ADD_TODO`, todo: `Buy Milk`}
   
   const todoAction = { type: `ADD_TODO`, todo: `Sleep More`}
-  const todoAction = { type: `ADD_TODO`, post: `Egg hunt with Yoshi`}
-  
-  
-  
-  
-  
   
   //6.dispatch the action: take store us dispatch-Method and in it pass die action
   store.dispatch(todoAction)
   
+  //11 add more posts and todod direct in dispatch function and 
+store.dispatch({ type: `ADD_TODO`, todo: `Buy some Eggs`})
+  store.dispatch({ type: `ADD_POST`, post: `Egg hunt with Yoshi`})
   
   
   ```
-
+  
 - 
 
 ### DiesDas:
