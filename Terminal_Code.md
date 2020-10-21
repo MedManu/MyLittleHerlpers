@@ -37,4 +37,8 @@
   server: {"url": " http://192.168.0.24:3000"}
   ```
 
-fc85729d36218b71eaebc7a4eae6296cc7a4ddd7
+### Skript ausführbar machen:
+
+im richtigen Pfad:
+
+- Sudo chmod +x nameDerFile
