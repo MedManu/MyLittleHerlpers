@@ -1,7 +1,15 @@
 # React
 
-## Alg-React projekt erstellen stepBystep:
+## Abfolge der Programs
 
+1. componentWillMount() {/** Bevor die Seite geladen ist */}
+2. render(){/** Alles was hier steht, wird immer ausgeführt, wenn sich eine prop oder der state ändert ausgeführt. aber nur das was geändert wird*/}
+3.   componentDidMount() {
+    /**Wenn die Seite geladne ist  */
+    this.setState({ anzahl: this.state.anzahl + 5 });
+  }
+
+## Alg-React projekt erstellen stepBystep:
 1. `npm init`
 
    1. Der Befehl npm init erzeugt automatisch eine neue Datei mit dem Namen **package.json**. package.json enthält Metadaten über Ihr neues Projekt.
