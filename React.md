@@ -1,5 +1,6 @@
 # React
 
+<<<<<<< HEAD
 ## Abfolge der Programs
 
 1. componentWillMount() {/** Bevor die Seite geladen ist */}
@@ -8,6 +9,15 @@
     /**Wenn die Seite geladne ist  */
     this.setState({ anzahl: this.state.anzahl + 5 });
   }
+=======
+### Schnell Erstellung:
+
+1. npm init 
+2. npm install create-react-app
+3. Npx create-react-app nammederapp
+
+## Alg-React projekt erstellen stepBystep:
+>>>>>>> d73b20002f54f36082c86ab2a10d176ba2f52988
 
 ## Alg-React projekt erstellen stepBystep:
 1. `npm init`
@@ -505,6 +515,10 @@
           <Ninjas name="Yoshi" age="28" belt="Black" />
           <Ninjas name="Mario" age="35" belt="Black" />
     ```
+
+### State:
+
+
 
 
 
