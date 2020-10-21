@@ -1,8 +1,16 @@
+## Crossplatform auf Handy:
+
+- In capacitor.config.json in main root:
+
 ```
-server: {"url": " http://192.168.0.24:3000"}
+"server": {"url": " http://192.168.0.24:3000"}
 ```
 
-
+- Path for Android: `android/app/src/main/assets/capacitor.config.json`
+- Path for iOS: `ios/App/App/capacitor.config.json`
+- npm run build sync  
+- npx cap copy ios  
+- npx cap open ios  
 
 
 
@@ -26,3 +34,4 @@ const [rangeValue, setRangeValue] = useState<{
 useEffect(() => {
 }, [rangeValue]);
 ```
+

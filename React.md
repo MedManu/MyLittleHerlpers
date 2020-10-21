@@ -1,5 +1,11 @@
 # React
 
+### Schnell Erstellung:
+
+1. npm init 
+2. npm install create-react-app
+3. Npx create-react-app nammederapp
+
 ## Alg-React projekt erstellen stepBystep:
 
 1. `npm init`
@@ -497,6 +503,10 @@
           <Ninjas name="Yoshi" age="28" belt="Black" />
           <Ninjas name="Mario" age="35" belt="Black" />
     ```
+
+### State:
+
+
 
 
 
