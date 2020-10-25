@@ -1,15 +1,5 @@
 # React
 
-<<<<<<< HEAD
-## Abfolge der Programs
-
-1. componentWillMount() {/** Bevor die Seite geladen ist */}
-2. render(){/** Alles was hier steht, wird immer ausgeführt, wenn sich eine prop oder der state ändert ausgeführt. aber nur das was geändert wird*/}
-3.   componentDidMount() {
-    /**Wenn die Seite geladne ist  */
-    this.setState({ anzahl: this.state.anzahl + 5 });
-  }
-=======
 ### Schnell Erstellung:
 
 1. npm init 
@@ -768,3 +758,12 @@ store.dispatch({ type: `ADD_TODO`, todo: `Buy some Eggs`})
 
 - referenz mit () heist das funktion gleich nach aufrufen der Seite abgefeuert wird -> {handleClick}
 - Ohne (), wird sie erst nach cklcken auf den Button abgefeuert ->{handleClick}
+
+## Abfolge der Programs
+
+1. componentWillMount() {/** Bevor die Seite geladen ist */}
+2. render(){/** Alles was hier steht, wird immer ausgeführt, wenn sich eine prop oder der state ändert ausgeführt. aber nur das was geändert wird*/}
+3.   componentDidMount() {
+    /**Wenn die Seite geladne ist  */
+    this.setState({ anzahl: this.state.anzahl + 5 });
+  }s
