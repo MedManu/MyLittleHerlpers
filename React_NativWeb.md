@@ -41,6 +41,147 @@ Virtual Dom ist kopie des realen DOM in React
 
 ![Bildschirmfoto 2020-10-23 um 07.21.27](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/Bildschirmfoto 2020-10-23 um 07.21.27.png)
 
+## Schnellinstalation mit React
+
+1) Terminal: 
+
+- npm init
+
+- **Für React:**
+
+  - npm install react react-dom
+
+- **Für die dev Umgebung**:
+
+  - npm install webpack webpack-dev-server webpack-cli babel-loader html-webpack-plugin @babel/core @babel/preset-react --save-dev
+
+  - webpack
+
+  - webpack-dev-server: **lokaler Webserver**
+
+  - webpack-cli: **interaktion mit Webpack**
+
+  - babel-loader: **damit webpack jsx-Datein verarbeiten kann**
+
+  - html-webpack-plugin: **damit index.html in webpack u dem server verarbeitet werden kann**
+
+  - @babel/core @babel/preset-react : f**ür Funktionsweise und compelierung von jsx-Dateien**
+
+  - --save-dev: brauchen das alles nur für die Entwicklung und nicht während der Laufzeit
+
+    
+
+2) Erstellung eines src Ordners mit index.html file darin
+
+- Einstiegspunkt :
+
+  ```html
+  body>
+      <div id="my-react-app"></div> 
+  </body>
+  ```
+
+3) Index.jsx file in src
+
+- React und react-dom importieren
+
+```
+import React from 'react'
+import ReactDom from 'react-dom'
+```
+
+- in Vorbereitung gleich App importieren 
+
+4) Ordner app in src und App.jsx erstellen
+
+```javascript
+export class App extends React.Componente {
+    render() {
+        return(
+            <h1></h1>
+        );
+    }
+}
+```
+
+5) React.Dom Funktion in der index.jsx file erstellen und App einbinden
+
+```javascript
+
+import { APP } from './app/App'
+
+ReactDom.render(
+    <App />,
+    document.getElementById("my-react-app")
+)
+```
+
+6) Babel.config.json anlegen
+
+```json
+{
+  "presets": [
+    "@babel/preset-react"
+  ]
+}
+```
+
+7) Webpack.config.js anlegen
+
+```javascript
+const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  entry: path.resolve("src", "index.jsx"),
+  mode: "development",
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
+        },
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      }
+    ]
+  },
+  resolve: {
+    extensions: [ '.js', '.jsx' ]
+  },
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: path.join(__dirname, 'src', 'index.html'),
+      filename: 'index.html'
+    })
+  ]
+};
+
+```
+
+
+
+7) Scripte in package.json definieren:
+
+```json
+scripts": {
+    "start": "webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+```
+
 
 
 ## Erstellen eines Projekts im Ordner 
@@ -299,7 +440,116 @@ CSS Datei muss dann noch in die index.html file eingebunden werden
 
 ![Bildschirmfoto 2020-10-24 um 18.22.54](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/Bildschirmfoto 2020-10-24 um 18.22.54.png)
 
-## Webpack
+## React-State:
+
+![Bildschirmfoto 2020-10-26 um 06.22.13](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/State/Bildschirmfoto 2020-10-26 um 06.22.13.png)
+
+- Variablen, die sich zur Laufzeit ändern. State X kann gleich wieder ein andere State sein. 
+- State = was wird im front-end dargestellt
+- Userinteraktionen, API`s verändern States
+- JSX-Varablen und props sind Objekte die den Zustand der App verändern können - sind aber Statis = initial gesetzt und ausgelesen (read-only)
+- DIe render() Funktion wird be ider veränderung dieser Varibalen und porps nicht automatisch neu aufgerufen
+
+**React verwaltet ein Objekt state, das über setState() verändert wird**
+
+- über setState() bekommt react eine Veränderung mit und führt die render() Funktion nocheinmal aus
+
+```javascript
+class MyComponent extend React.Component {
+constructor(props) {
+super(props);
+this.state = {myKey: "initialState"}
+}
+
+changeState() {
+this.setState({myKey: "myNewValue"})
+}
+
+render() {
+return (<p>{this.state.myKey}</p>)
+}
+}
+```
+
+**Ablauf**:
+
+1. Unser key wird im Konstrukteur erstellen
+2. Unsere render() Funktion stellt den Key in einem p-Tag da
+3. Wenn wir unseren Key verändern wollen, müssen wir die Funktion changeState() die setState() enthält aufrufen
+
+```javascript
+export class Headline extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { myKey: "initialState" };
+  }
+
+  changeState() {
+    this.setState({myKey: "myNewValue"})
+    }
+
+  render() {
+    const myStyle = { color: "red" };
+    //style={myStyle}
+
+    setTimeout(() => {this.changeState()}, 2000 )
+    return (
+      <div>
+        <h1 className="headline">{this.props.propsHeadline}</h1>
+        <p>{this.state.myKey}</p>
+      </div>
+    );
+  }
+}
+```
+
+### Konstruktor:
+
+Ist die initiale Funktion einer Klasse, die Klasse/Componente initialisiert wird. Wird immer einmal beim instanziieren aufgerufen. 
+
+Der Konstruktor bekommt immer die aktuellen props als Parameter und diese werden über die super() Funktion immer weitergegeben. So das die Basisklasse auch zugriff auf die props bekommt.
+
+```javascript
+constructor(props) {
+super(props);
+}
+```
+
+### Unterscheid zwischen Props und State
+
+![Bildschirmfoto 2020-10-26 um 06.58.47](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/State/Bildschirmfoto 2020-10-26 um 06.58.47.png)
+
+![Bildschirmfoto 2020-10-26 um 18.28.25](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/State/Bildschirmfoto 2020-10-26 um 18.28.25.png)
+
+- Öfteres Zugreifen auf This.state in setState() is nocht 100% möglich 
+
+**Lösung**:
+
+![Bildschirmfoto 2020-10-26 um 18.35.09](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/State/Bildschirmfoto 2020-10-26 um 18.35.09.png)
+
+- setState() akzeptiert auch Funktionen als Parameter, die für uns dann genau den state ändern, wenn wir ihn brauchen. Bekommen dann den wriklich angepassten States u Props, wenn wir setState() so wie oben verwenden.
+
+- Also wenn wir auf this.state in setState() zugreifen müssen, dann die obrige funktionsbasierte Variante verwenden.
+- Wenn nicht, dann die andere Variante.  
+
+Wenn render() Funktion länger braucht als unser setState() kann es zufehlern kommen. Auc hierfür gibt es hilfe .
+
+![Bildschirmfoto 2020-10-26 um 18.53.10](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/State/Bildschirmfoto 2020-10-26 um 18.53.10.png)
+
+- Mount-Komponenten: Befor die Komponente das alererste Mal auf den DOM gerendert wird
+- Update-Komponenten: Passiert nach dem Aufruf von setState(). Dreht sich ums erneute Aufrufen von render()
+- Unmount-Komponente: Aufruf kurz bevor eine Kompoente aus dem DOM entfernt wird
+
+- **componentDidMount()** -> wird nach dem initialen render() aufgerufen.
+- **shouldComponentUpdate()** -> zur Steuerung ob render aufgerufen werden soll oder nicht - true oder false
+- **componentDidUpdate()** -> wird nach dem render() was durch ein setState() getriggerd wurde aufgerufen
+- **componentWillUnmount()** -> wird Aufgerufen, kurz bevor die Komponente aus dem DOM entfernt wird - gibt keine danach Funktion
+
+**Wann sollen die Lifecycles verwendet werden?**
+
+![Bildschirmfoto 2020-10-26 um 19.07.31](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/State/Bildschirmfoto 2020-10-26 um 19.07.31.png)
+
+- API-Calls erst wenn bereits gerendert wurde
 
 
 

@@ -3,8 +3,9 @@
  
 
 - Add new file: vim namederfile.typ/ touchv filename.typx
-
 - I for inser, ESC = end, q=quit
+- cp Pfad wo doKument
+  - Kopieren von files
 
 
 

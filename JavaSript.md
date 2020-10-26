@@ -38,8 +38,14 @@ F12 im Browser und Console wählen, können ausgaben die im js file gemacht werd
 
     ```javascript
     test();
-    ```
-
-  - 
-
+    
+  ```
   
+
+### Arrow-Functions:
+
+hat eine kürzere Syntax als ein Funktionsausdruck und hat kein eigenes `this`, [arguments](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/arguments), [super](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/super), oder [new.target](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/new.target). Solche Funktionsausdrücke sind am besten für Funktionen, die nicht als Methode genutzt werden, geeignet und können nicht als Konstruktoren verwendet werden.
+
+### Asynchrones Programmieren:
+
+FUnktions wird nicht sofotz und auch nocht in der scheinbar richtigen Reihnefolge ausgeführt.
