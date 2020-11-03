@@ -53,7 +53,11 @@ Virtual Dom ist kopie des realen DOM in React
 
 - **Für die dev Umgebung**:
 
-  - npm install webpack webpack-dev-server webpack-cli babel-loader html-webpack-plugin @babel/core @babel/preset-react --save-dev
+  ```bash
+ npm install webpack webpack-dev-server webpack-cli babel-loader html-webpack-plugin @babel/core @babel/preset-react --save-dev
+  ```
+
+  - index.html
 
   - webpack
 
@@ -66,9 +70,9 @@ Virtual Dom ist kopie des realen DOM in React
   - html-webpack-plugin: **damit index.html in webpack u dem server verarbeitet werden kann**
 
   - @babel/core @babel/preset-react : f**ür Funktionsweise und compelierung von jsx-Dateien**
-
+  
   - --save-dev: brauchen das alles nur für die Entwicklung und nicht während der Laufzeit
-
+  
     
 
 2) Erstellung eines src Ordners mit index.html file darin
@@ -108,7 +112,7 @@ export class App extends React.Componente {
 
 ```javascript
 
-import { APP } from './app/App'
+import { App } from './app/App'
 
 ReactDom.render(
     <App />,
@@ -177,10 +181,14 @@ module.exports = {
 
 ```json
 scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
 ```
+
+
+
+**Npm Start Problem:** 
 
 
 
@@ -407,8 +415,9 @@ Um das machen zu können, muss in der index.html unser Typ als module deklariert
   ```
 
 - Und innerhalb der Komponente dann ausgelesen:
-  - klassenbasiert mit **this.props.nameMeinerVarable**
-
+  
+- klassenbasiert mit **this.props.nameMeinerVarable**
+  
 - ```
   class MyComponent extends React.Componente {
   redner() {
@@ -549,11 +558,79 @@ Wenn render() Funktion länger braucht als unser setState() kann es zufehlern ko
 
 ![Bildschirmfoto 2020-10-26 um 19.07.31](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/State/Bildschirmfoto 2020-10-26 um 19.07.31.png)
 
-- API-Calls erst wenn bereits gerendert wurde
+- API-Calls erst wenn bereits gerendert  => componentDidMount()
+
+```javaScript
+<ImageChanger images= {images} interval = {3000}/>
+        );
+        
+   changeImage() {
+      this.setState((state, props) => {
+          return {
+            imageIndex: getNextIndex(this.props.images, state.imageIndex)
+          }
+          
+      })
+  }
+  
+   componentDidMount() {
+    this.intervalID = setInterval(() => {
+        console.log("Test")
+        this.changeImage();
+    }, this.props.interval);
+  };
+```
+
+## User-Events
+
+ ![Bildschirmfoto 2020-11-01 um 10.30.37](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/State/Bildschirmfoto 2020-11-01 um 10.30.37.png)
+
+- mit this.NameDerFunktion wird verwiesen
+- Übergabe ohne **()**, da wird es nur als Variable übergene wollen und sie soll erst aufgerufen werden, wenn der User Click. Mit **()** würde die Funtion sofart gerendert u ausgeführt werden u das wolle nwir nicht.
+
+### ACHTUNG Stolperfalle mit this:
 
 
 
-## Abfolge der Programs
+![Bildschirmfoto 2020-11-01 um 10.47.22](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/State/Bildschirmfoto 2020-11-01 um 10.47.22.png)
+
+- tritt auf, wenn wir den Click-Event zur Manipuatione des States verwenden wollen. Weil in JavaSript mit die this nicht unbedingtauf die Insanz es Objektes verwiesen wird, sondern kann auc hauf de nAUfrufer verwiesen werden. Heißt: Da JAvaSript für uns den AUfruf mit this macht u nicht wir selbst, das das this in this.setState leider undefiniert u wir bekommen den Fehler "**Uncought TypeError"**
+
+### Lösung:
+
+![Bildschirmfoto 2020-11-01 um 11.03.55](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/State/Bildschirmfoto 2020-11-01 um 11.03.55.png)
+
+- **Entweder** stat driekte Refernz auf die Funktion, eine **Arrow-Funktion** verwenden. Funktion mus jetzt aber mit () Übergeben werden
+  - **() =>{}** Generiert Funtion für uns, bei der die this-refernz aufrecht gehalten wird. Ist als oimmer das Objekt der Instanz, die die Funktion kreiert
+- **Oder** mit der eher empfohleren Variante **.bind(this)**.
+  - this.click im Konstruktor mit this.click.bind(this) überschreiben. Sagt, wann immer die Funktion onClick aufgerufen wird ist this, die Instanz der Umgebendesn Objekts.
+- Wenn der existierende State in der setState() Methode anpassen wollen, müssen wir das immer über iene Mehtode machen
+- This.setState(state => { ........  return state})
+
+## Immutability
+
+![Bildschirmfoto 2020-11-01 um 12.57.42](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/State/Bildschirmfoto 2020-11-01 um 12.57.42.png)
+
+- cup in filledCup() steht für den emptyCup
+- hier ist emtYCup und filledCup das gleiche MACHT man NICHT!!
+
+![Bildschirmfoto 2020-11-01 um 13.04.59](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/State/Bildschirmfoto 2020-11-01 um 13.04.59.png)
+
+-  Statt nur cup zurück zu geben, erstellt die Funktion einen neuen CUp der mit true arbeitet
+
+![Bildschirmfoto 2020-11-01 um 13.09.38](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/State/Bildschirmfoto 2020-11-01 um 13.09.38.png)
+
+
+
+
+
+
+
+
+
+
+
+## Ablauf eines Programms:
 
 1. componentWillMount() {/** Bevor die Seite geladen ist */}
 2. render(){/** Alles was hier steht, wird immer ausgeführt, wenn sich eine prop oder der state ändert ausgeführt. aber nur das was geändert wird*/}
