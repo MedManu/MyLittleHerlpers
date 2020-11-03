@@ -35,3 +35,20 @@ useEffect(() => {
 }, [rangeValue]);
 ```
 
+## Cropssplatform
+
+### Classen:
+
+```typescript
+class NameDerKlasse extends React.Component<AppState> {}
+```
+
+### Export der klassse
+
+```
+export const MyVarableName = connect<AppState, {}, {}, AppState>((state: AppState) => {
+return state
+}(NameDerKlasse)
+)
+```
+
