@@ -622,6 +622,8 @@ Wenn render() Funktion länger braucht als unser setState() kann es zufehlern ko
 
 
 
+# State - Part 2
+
 
 
 
