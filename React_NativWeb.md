@@ -620,8 +620,6 @@ Wenn render() Funktion länger braucht als unser setState() kann es zufehlern ko
 
 ![Bildschirmfoto 2020-11-01 um 13.09.38](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/State/Bildschirmfoto 2020-11-01 um 13.09.38.png)
 
-
-
 # State - Part 2
 
 
