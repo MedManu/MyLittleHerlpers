@@ -12,5 +12,7 @@
     chmod +x ./NameDesSkripts.sh
     ```
 
-  - c
+- Skript ausführen:
+
+  - ./NamedesSkripts
 
