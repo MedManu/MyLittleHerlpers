@@ -41,7 +41,7 @@ Virtual Dom ist kopie des realen DOM in React
 
 ![Bildschirmfoto 2020-10-23 um 07.21.27](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/Bildschirmfoto 2020-10-23 um 07.21.27.png)
 
-## Schnellinstalation mit React
+## Instalation mit React
 
 1) Terminal: 
 
@@ -620,6 +620,29 @@ Wenn render() Funktion länger braucht als unser setState() kann es zufehlern ko
 
 ![Bildschirmfoto 2020-11-01 um 13.09.38](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/State/Bildschirmfoto 2020-11-01 um 13.09.38.png)
 
+
+
+## Uplifting
+
+- **Anforderung**:
+  - Der selbe State soll in meheren Komponenten verwendet werden
+- **Problem**:
+  - State ist fest an eine einzige Komponente gebunden
+- **Lösung**:
+  - Verwendung von State in der ersten gemeinsamen Eltern-Komponenten
+  - Weittergabe des geteilten states über props
+
+## State-Stolperfallen
+
+- Veränderbarer Zusand einer App zur Zeit X
+  - Zustan im Fronden === Darstellung und Inhalte der App
+  - Veränderung ausgelöst z.b. durch Userinteraktion, API-Antworten,....
+- State-Management ist nicht leicht
+  - Veränderungen werden oft asynchron ausgelöst und verarbeitet
+  - State wirkt sich oft auf mehrere Komponenten gleichzeitig aus
+  - State leitet sich oft voneinander ab
+  - State im Froenend ist oft selbst nur eine Replikation oder Synchronisation 
+
 # State - Part 2
 
 ![Bildschirmfoto 2020-11-15 um 09.58.22](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/State/Bildschirmfoto 2020-11-15 um 09.58.22.png)
@@ -646,3 +669,9 @@ Wenn render() Funktion länger braucht als unser setState() kann es zufehlern ko
   -  13 --> Minor, erhöht sich, wenn z.b. Additive Aänerung - neu features in der Library 
   - 1--> Patch, sind Bugfixes oder andere kleine Änderungen
 - Natives JavaSript wir in {eckigen Klammern geschrieben}
+
+### Schnell Erstellung:
+
+1. npm init 
+2. npm install create-react-app
+3. Npx create-react-app nammederapp
