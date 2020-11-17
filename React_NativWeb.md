@@ -643,6 +643,16 @@ Wenn render() Funktion länger braucht als unser setState() kann es zufehlern ko
   - State leitet sich oft voneinander ab
   - State im Froenend ist oft selbst nur eine Replikation oder Synchronisation 
 
+## Vereinfachungen
+
+- **Devide and Conquer**
+  - Deklarative atomare Komponenten verwenden
+  - State-Management von der darstellung trennen (Container und Statless-Cpmponents)
+- Vorhersagbarkeit und Kontrolle erhöhen
+  - Immutability und Pure Components verwenden
+  - State kontrolliert, (übre Funktionen) verändern
+  - Wenn nötig zentralen State nutzen
+
 # State - Part 2
 
 ![Bildschirmfoto 2020-11-15 um 09.58.22](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/State/Bildschirmfoto 2020-11-15 um 09.58.22.png)
