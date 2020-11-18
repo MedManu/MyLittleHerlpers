@@ -645,7 +645,7 @@ Wenn render() Funktion länger braucht als unser setState() kann es zufehlern ko
 
 ## Vereinfachungen
 
-- **Devide and Conquer**
+- **Devide and C onquer**
   - Deklarative atomare Komponenten verwenden
   - State-Management von der darstellung trennen (Container und Statless-Cpmponents)
 - Vorhersagbarkeit und Kontrolle erhöhen
