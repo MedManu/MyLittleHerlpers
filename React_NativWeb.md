@@ -642,6 +642,11 @@ Wenn render() Funktion länger braucht als unser setState() kann es zufehlern ko
   - State wirkt sich oft auf mehrere Komponenten gleichzeitig aus
   - State leitet sich oft voneinander ab
   - State im Froenend ist oft selbst nur eine Replikation oder Synchronisation 
+- State-Management wirkt oft sehr komplex
+- Auswirkungen
+  - Als Entwickler schwer, die Übersicht zu behalten
+  - Statte ist schwer reproduzierbar u deswegen nur schwer und langsam zu testen
+  - Fehler können katastrophale Auswirkungen bis hin zur Unbenutzbarkeit der App haben
 
 # State - Part 2
 
