@@ -20,6 +20,18 @@ F12 im Browser und Console wählen, können ausgaben die im js file gemacht werd
 - const b = "Hallo Welt";
 - console.log(a);
 - ohne var u const ist es Globale Variable, Function mit varible muss aber zuerst aufgerufen werden.
+- Strenger Modus:
+  -  undeklarierte Variablen oder Anweisungen ohne abschließendes Semikolon verboten
+  - "use strict"
+
+## Vergleichsoperatoren
+
+- Boolean(a==b) -> Prüft auch gleichen Inhalt
+- Boolean(a===B) -> Prüft auch noch auf den gleichen Typen
+- var x = (42 == 42) ? 42:2121;
+  - Wenn bedingung wahr wollen wir in die Variable 42 schreiben, wenn nicht dann 2121
+
+
 
 ### Funktionen:
 
@@ -39,8 +51,10 @@ F12 im Browser und Console wählen, können ausgaben die im js file gemacht werd
     ```javascript
     test();
     
+    ```
   ```
   
+  ```
 
 ### Arrow-Functions:
 
@@ -49,3 +63,8 @@ hat eine kürzere Syntax als ein Funktionsausdruck und hat kein eigenes `this`, 
 ### Asynchrones Programmieren:
 
 FUnktions wird nicht sofotz und auch nocht in der scheinbar richtigen Reihnefolge ausgeführt.
+
+## DiesDas:
+
+- .search() -> lässt im text nach etwas suchen
+- .toLowerCase() -> convertieren in groß oder Kleinbuchstaben
