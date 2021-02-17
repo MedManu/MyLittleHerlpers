@@ -133,4 +133,8 @@ Machen es einfachen klassen mit css zu versehen. Nimmmt die volle Breite der Sei
 
   ​    }
 
+  ## Diesdas:
   
+   <meta name="viewport" content="width = device-width, initial-scale = 1">
+
+- passt größe automatisch an
