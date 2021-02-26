@@ -181,13 +181,27 @@ tuwas
 
 - Brauch ich um auf elemente zugreifen zukönnen u sie zu bearbeiten
   - Document.getElementById("ID").innerHTML = "NeuerName" -> Ändert den Namen wenn darauf geklickt wird
+  - innerHTML gibt mir immer den Inhalt aus: gerade Zhalen sind der Text zwischen zwei Elementen, ungereade der text innerhalb eines Elements
 - Document.getElementsByTagName("NamedesTags")
   - var tag = Document.getElementsByTagName("NamedesTags"):
   - Zugriff mit tag[1]
 - Document.getElementsByClassName("NamederKlasse")
 - Document.getElementsById("Name").id = "neueId"
 
+## this:
 
+- this im Funltionsaufruf sagt, das genau das element gemeint ist, in dem das Event stattfinden
+
+  - ```html
+    <h1>onclick="nameDerFubktion(this)"</h1>
+    ```
+
+    
+
+
+## Cookies:
+
+- Gedacht um Informationen vom user zu speichern
 
 ## DiesDas:
 
@@ -227,3 +241,30 @@ function moveDiv() {
 }
 ```
 
+- Event innerhalb einer funktion hinzufügen
+  
+  - Document.getElementById("id").addEveentListener("mouseover", funktion die ausfegührt werden soll)
+  
+- Element dynamisch per klick hinzufügen
+
+  - ```javascript
+    //paragraph erzeugen
+       var newPara = document.createElement("p");
+       //paragraph befüllen
+       newPara.innerHTML = "dynamisch erzeugter Praragraph";
+       //paragrapg an body heften
+       var div = document.getElementById("div1");
+       div.appendChild(newPara)
+    
+    
+    ```
+
+- Auf neue Seite schicken
+
+  - ```javascript
+    window.location.href = "https.//www.google.com"
+    ```
+
+    
+
+  - 
