@@ -3,8 +3,9 @@
  
 
 - Add new file: vim namederfile.typ/ touchv filename.typx
-
 - I for inser, ESC = end, q=quit
+- cp Pfad wo doKument
+  - Kopieren von files
 
 
 
@@ -24,3 +25,21 @@
 
 - Staten:  docker-compose -f local.yml up   
 - Ende: gr. C
+
+### Femsense
+
+- npx cap copy
+
+- npx cap open [ios | android]
+
+- npm run build
+
+- ```
+  server: {"url": " http://192.168.0.24:3000"}
+  ```
+
+### Skript ausführbar machen:
+
+im richtigen Pfad:
+
+- Sudo chmod +x nameDerFile
