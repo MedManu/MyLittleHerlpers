@@ -658,15 +658,171 @@ Wenn render() Funktion länger braucht als unser setState() kann es zufehlern ko
   - State kontrolliert, (übre Funktionen) verändern
   - Wenn nötig zentralen State nutzen
 
-# State - Part 2
-
-![Bildschirmfoto 2020-11-15 um 09.58.22](/Users/manu/Documents/MyLittleHerlpers/Typora_pics/State/Bildschirmfoto 2020-11-15 um 09.58.22.png)
 
 
 
 
+## React-Forms:
+
+### Inputs :
+
+- haben eigernen interne State 
+
+- Wird über state-Objekt verwaltet
+
+- Um Input -State zu nutzen muss die Controlle komplett an react übergeben werden
+
+- wird **Controlled Components** genannt
+
+  - ```
+    <from onSubmit={this.onSubmit}>
+    <input type = "text"
+    value= {this.state.value}
+    onChange={this.onChange}
+    >
+    </form>
+    ```
+
+- Event.target zeigt auf das html element
+
+- Event.target.value gibt mir den eingegebene wert
+
+- State auf eingäbe setzten;
+
+  - ```
+    handleChange(event) {
+    console.log(event.target.value);
+    this.setState({
+        name: event.target.value
+    })
+    
+    <input type="text" value={this.state.name} onChange={this.handleChange} />
+    ```
+
+### Select Input
+
+- Vorauswhal für den user
+
+  - ```html
+      handleShirtSizeChange(event) {
+        this.setState({
+          shirtSize: event.target.value,
+        });
+      }
+    
+    <select
+              value={this.state.shirtSize}
+              onChange={this.handleShirtSizeChange}
+            >
+              <option value="w-s">W-S</option>
+              <option value="w-m">W-M</option>
+              <option value="w-l">W-L</option>
+              <option value="m-s">M-S</option>
+              <option value="m-m">M-M</option>
+              <option value="m-l">M-L</option>
+            </select>
+    ```
+
+  ### 
+
+### Checkbox:
+
+- benötigen keine value-Property, sondern einen boolsche check-Property
+
+  - ```
+    constructor(props) {
+        super(props);
+        this.state = {
+          name: "",
+          shirtSize: "w-s",
+          lunch: false,
+        };
+        //this binding
+        this.handleChange = this.handleChange.bind(this);
+        this.handleShirtSizeChange = this.handleShirtSizeChange.bind(this);
+        this.hanldeCheckedChange = this.hanldeCheckedChange.bind(this);
+    
+    
+    hanldeCheckedChange(event) {
+          this.setState(
+              {lunch: event.target.checked}
+          )
+      }
+      
+       <label htmlFor="checkbox">Willst du Mittagessen</label>
+            <input
+              id="checkbox"
+              type="checkbox"
+              checked={this.state.lunch}
+              onChange={this.hanldeCheckedChange}
+            />
+    ```
+
+  - 
+
+### Computed property names
+
+const myKey = "keyName";
+
+const myObject = {
+
+[myKey] = "value"
+
+}
+
+Console.log(myObject.keyName);
+
+Console.log(myObject[myKey]);
+
+- [event.target.name] --> vergebenden Key eines Objektes dynamisieren
+
+  - Als keywird jetzt der Inhalt von **event.target.name** genommen
+  - in html dann name = "wert"
+
+  ```html
+   handleChange(event) {
+        console.log(event.target.name);
+      this.setState({
+        [event.target.target]: event.target.value,
+      });
+    }
+    
+    label>
+            Name:
+            <input
+            -->  name="name"
+              type="text"
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
+          </label>
+  
+    <input
+            id="checkbox"
+           --> name="lunch"
+            type="checkbox"
+            checked={this.state.lunch}
+            onChange={this.handleChange}
+          />
+  ```
 
 
+
+### Veränderte if-abfrage
+
+- Condition ? Wenn true : wenn false
+
+  - ```javascript
+    const value = event.target.name == "lunch" ? event.target.checked : event.target.value
+    
+     this.setState({
+          [event.target.target]: value
+        });
+    ```
+
+    
+
+  - 
 
 ## Ablauf eines Programms:
 
@@ -690,3 +846,11 @@ Wenn render() Funktion länger braucht als unser setState() kann es zufehlern ko
 1. npm init 
 2. npm install create-react-app
 3. Npx create-react-app nammederapp
+
+### Schnelle Erstellung2:
+
+1. npm init
+2. npm install react reactdom
+
+3. npm install webpack webpack-dev-server webpack-cli babel-loader html-webpack-plugin @babel/core @babel/preset-react --save-dev
+

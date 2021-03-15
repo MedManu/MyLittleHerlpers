@@ -3,9 +3,12 @@ React
 ### Schnell Erstellung:
 
 1. npm init 
-2. npm install create-react-app
-3. Npx create-react-app nammederapp
 
+2. npm install create-react-app
+
+3. Mix create-react-app namederapp
+
+  
 ## Alg-React projekt erstellen stepBystep:
 1. `npm init`
 
@@ -763,5 +766,9 @@ store.dispatch({ type: `ADD_TODO`, todo: `Buy some Eggs`})
 3.   componentDidMount() {
     /**Wenn die Seite geladne ist  */
     this.setState({ anzahl: this.state.anzahl + 5 });
+<<<<<<< HEAD
     }s
 >>>>>>> bc566623d45ce9bf686b658e320986169f4c19c2
+=======
+    }s
+>>>>>>> 6fb7a358e6793672769e6cce13a9056c49802c92

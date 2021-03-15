@@ -14,7 +14,7 @@
 
 
 
-
+- chrome://inspect/#devices
 
 ```
 const [rangeValue, setRangeValue] = useEffect<{
@@ -52,3 +52,17 @@ return state
 )
 ```
 
+### backend Account bearbeiten
+
+```
+curl\
+  -X POST -d '{"email":"test1@steadysense.at","password":"abc123abcxyz"}'\
+ -H "Accept: application/json" \
+ -H "Content-Type: application/json" \
+https://app.staging.femsense.com/api/v1/auth/login/
+```
+
+
+
+- Tokken der da rauskommt dann in femsense-capasitor-browser.ts eingeben
+- dann im femsense backend suchen
