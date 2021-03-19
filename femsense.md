@@ -56,7 +56,7 @@ return state
 
 ```
 curl\
-  -X POST -d '{"email":"test1@steadysense.at","password":"abc123abcxyz"}'\
+  -X POST -d '{"email":"tester1622@femsense.com","password":"testermtesterm"}'\
  -H "Accept: application/json" \
  -H "Content-Type: application/json" \
 https://app.staging.femsense.com/api/v1/auth/login/

@@ -49,7 +49,8 @@ Virtual Dom ist kopie des realen DOM in React
 
 - **Für React:**
 
-  - npm install react react-dom
+  - npm install react 
+  - npm i react-dom
 
 - **Für die dev Umgebung**:
 
@@ -766,7 +767,7 @@ const myKey = "keyName";
 
 const myObject = {
 
-[myKey] = "value"
+[myKey] : "value"
 
 }
 
@@ -808,6 +809,41 @@ Console.log(myObject[myKey]);
 
 
 
+### Object-Spread
+
+- Js Funktion zum kopieren (Immutebility) von Elementen von einem in das andereObjekt
+
+  - ``` 
+    const cup = {filled: false, label: "Best React Developer"};
+    const filledCup = {
+    ...cup // ... -> wenn mehre element hinein kommen können 
+    filled: true
+    };
+    consol.log(filledCup);
+    ```
+
+
+
+### Konditionales Rendern
+
+- Jsx ist pures JavaScript
+  - So lassen sich auch alle Js-Funktionen nutzen
+- Mit einer if-Bedingung können wir ein einer Komponente unterschiedliche Outputs rendern
+
+```
+render( {
+if(this.stats is loading) {
+return (<h1>Still loading......<h1>)
+} else {
+return ( <ResultView values={this.state.result }/>)
+}
+})
+```
+
+
+
+
+
 ### Veränderte if-abfrage
 
 - Condition ? Wenn true : wenn false
@@ -820,9 +856,214 @@ Console.log(myObject[myKey]);
         });
     ```
 
-    
+### Listen in React
 
-  - 
+-  sind gleichartige React.Komponenten, die sich nur in ihrem Inhalt unterscheiden(props)
+
+  - Kex-Property muss gesetzt werden
+
+- ```
+  render() {
+  const sourceArray = [1,2,3];
+  const lieElements = sourceArray.map(currentNum => {
+  return (<li key={currentNum}>{currentNum}</li>)
+  });
+  return (<ul>{liElements}</ul>)
+  }
+  
+  ```
+
+- ```
+  <ul>
+  <li key="1">1</li>
+  <li key="2">2</li>
+  <li key="3">3</li>
+  </ul>
+  ```
+
+- 
+
+- map.Funktion: kann auf array angewandt werden und itteriert durch jedes einzelne Element des array u speichert rückgabewert der finktion in neuem Array
+
+### Object-Destructuring
+
+- Entnahme von properties eines Objektes in gleichnamigen Variablen
+
+  - Ersparrt uns Code-Dublication
+
+  ```javascript
+  const sourceObject = {
+  name: "Berry Allen",
+  heroName: "Flesh",
+  superPoweer: "Speed"
+  }
+  
+  const {heroName, superPower} = sourceObject;
+  
+  console.log(heroName);
+  console.log(superPower );
+  
+  //gleich wie
+  
+  console.log(sourceObject.heroName);
+  console.log(sourceObject.superPower );
+  
+  //Klappt auch mit Arrrays
+  const sourceArrray = ["The Flash", "Speed"];
+  const [heroName, superPower] = sourceArrray;
+  
+  const heroName = sourceArray[0];
+  const superPower = sourceArray[1];
+  ```
+
+
+
+### Wrapper-Components
+
+- Komponenten die andere komponente numschließen
+  - Die äußerste Komponente (Wrapper) kennt de nInhalt der inneren (Child) nicht
+  - Wird oft gür abstraktes Verhalten oder gemeinsames Styling verwendet (Sliders,Tabs)
+- Erlaubt sehr generische, wiederverwendbare Komponentenentwicklung
+
+```javascript
+<Slider>
+<Image content = "Image"/>
+<text = content "My Text"/>
+<GenericContent content= "other content"/>
+</Slider>
+```
+
+
+
+- Zugriff auf innere Komponenten über props.children
+
+```javascript
+class RedBorder extends React.Componente {
+render() {
+const styles = {border: "solid red"};
+
+return(
+<div style={styles}{this.props.children}> </div>
+)
+}
+}
+```
+
+
+
+```html
+<RedBorder>
+<p> Dieser Text hat einen roten rand</p>
+</RedBorder>
+```
+
+
+
+- Zugriff auf props (und state) der kindkomponente möglich
+- Beispiel Tabs mit Überschrift
+- App.jsx
+
+```html
+render () {
+    return (
+      <TabController>
+        <Tab headline="Registrierung React-Workshop">
+          <RegisterForm onSubmit={this.handleSubmit} />
+        </Tab>
+        <Tab headline="Teilnehmendeliste">
+          <Attendeelist attendees={this.state.attendeelist} />
+        </Tab>
+      </TabController>
+    );
+  }
+```
+
+
+
+- Überschrifte nsollen in der Tab-Auswahl angezeigt werden
+
+```react
+export class TabController extends Component {
+    constructor(props){
+        super(props)
+        this.state={
+            activeTab: 0
+        }
+
+        this.switchTab = this.switchTab.bind(this);
+    }
+
+    switchTab(newIndex) {
+        this.setState({
+            activeTab: newIndex
+        })
+    }
+  render() {
+    const tabSelection = this.props.children.map((tab, index) => {
+        const key= 'tab-${index}' ;
+        const content = index == this.state.activeTab ?
+        (<b>{tab.props.headline}</b>) : (<i>{tab.props.headline}</i>)
+
+      return (
+        <li key={key}>
+          <a href="#" onClick={()=> this.switchTab(index)}>
+            {content}
+          </a>
+        </li>
+      );
+    });
+ 
+    return (
+      <div>
+        <nav>
+          <ul>{tabSelection}</ul>
+        </nav>
+        {this.props.children[this.state.activeTab]}
+      </div>
+    );
+  }
+}
+
+```
+
+
+
+- In der Tap.jsx
+
+```react
+export class Tab extends Component {
+    render() {
+        return (
+            <div>
+                <h1>{this.props.headline}</h1>
+                <article>{this.props.children}</article>
+            </div>
+        )
+    }
+}
+
+```
+
+
+
+### React.Fragment
+
+- Jsx-Element das nicht gerendert wird
+  - Zur Rückgabe von HTML-Geschwister-Elemente in einer Komponente
+  - Verhindert unnötige "<div>"- oder sonstige Platzhalter-Elemente im HTML
+
+```react
+redner() {
+return(
+<React.Fragment>
+ <h1>Headline</h1>
+ <p>Text</p>
+</React.Fragment>
+)
+}
+```
+
+
 
 ## Ablauf eines Programms:
 
@@ -840,6 +1081,8 @@ Console.log(myObject[myKey]);
   -  13 --> Minor, erhöht sich, wenn z.b. Additive Aänerung - neu features in der Library 
   - 1--> Patch, sind Bugfixes oder andere kleine Änderungen
 - Natives JavaSript wir in {eckigen Klammern geschrieben}
+- "#" bei <a> href verhindert das beim klick eine navigation ausgeführt wird
+- Wenn ein Object Null sein kann dann abfrage: if(!nextCycle){return null}
 
 ### Schnell Erstellung:
 
