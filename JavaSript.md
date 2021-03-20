@@ -170,6 +170,24 @@ tuwas
 
 
 
+### Rduce-Function
+
+- Itariert über jeds Element eines arrays
+  - Para2: das über das iterriret werden soll
+  - Para1: Das was wir zurück bekommen als nächste itration
+- Die Methode **reduce** ruft die angegebene Rückruffunktion (Callback) für alle Elemente in einem Array auf, mit dem Ziel, den Array-Inhalt auf einen einzigen Wert zu reduzieren. Einsatzzweck kann zum Beispiel eine Summen- oder Durchschnittsbildung sein.
+
+```
+export const sumRecpies = function (recepies) {
+  recepies.reduce((para1, para2) => {
+      
+  }, []);
+  return [];
+};
+```
+
+
+
 ## MAthematische Funktionen:
 
 - Math.ramdom() liefert zahlen zwischen 0(selten) und 1(nie)

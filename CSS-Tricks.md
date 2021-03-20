@@ -354,7 +354,106 @@ float: right;
      display: table;
     }
 
-## Buttons anzeigen
+## Flexbox
+
+```css
+const centralFlexBox: CSSProperties = {
+  height: "100%",
+  width: "100%",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+};
+```
+
+### Breathing
+
+```
+interface TodayCircleProps {
+  onClick: () => void;
+  topLine: string;
+  mainLine: string;
+  fontColor: string;
+  outerCircle: string;
+  innerCircle: string;
+  buttonText: string;
+  buttonColor: string;
+  dayNumber?: number;
+}
+
+const circleStyle: CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  width: "70%",
+  height: "70%",
+  backgroundImage: "url(" + props.outerCircle + ")",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "center",
+  backgroundSize: "100% 100%",
+  borderRadius: "50%",
+  textAlign: "center",
+  position: "relative",
+  zIndex: 0,
+};
+const innerCircleStyle1: CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  width: "80%",
+  height: "80%",
+  borderRadius: "50%",
+  textAlign: "center",
+  backgroundImage: "url(" + props.innerCircle + ")",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "center",
+  backgroundSize: "100% 100%",
+  position: "absolute",
+  zIndex: 1,
+  color: "white",
+};
+
+.breathingCircle {
+  animation: breathing 7s ease-out infinite normal
+}
+@keyframes breathing {
+  0% {
+    transform: scale(0.9);
+  }
+
+  25% {
+    transform: scale(1);
+  }
+
+  60% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(0.9);
+  }
+}
+
+return (
+    <div style={{ ...circleStyle }}>
+      <div
+        style={{
+          ...innerCircleStyle1,
+        }}
+      >
+        <div style={{ fontSize: "xxx-large" }}>{props.dayNumber}</div>
+        <div style={{ fontSize: "x-large" }}>{props.mainLine}</div>
+      </div>
+      <div className={"breathingCircle"} style={circleStyle} />
+      <div onClick={props.onClick} style={roundButtonStyle}>
+        {props.buttonText}
+      </div>
+    </div>
+  );
+};
+```
 
 ## Diverses
 
