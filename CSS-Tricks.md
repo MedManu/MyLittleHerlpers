@@ -1,5 +1,135 @@
 # CSS-Tricks and helper
 
+## Rangliste:
+
+- Tag < class < id
+
+- Tag: 
+
+```html
+<p>ich bin ein Paragraph </p>
+```
+
+- class
+
+```
+<p class/classname ={ptagstyle}>Ich bin auch ein Paragraph</p>
+```
+
+- ID
+
+  ```html
+  <p id ="pID">Ich bin ebenfalls ein Paragraph</p>
+  ```
+
+  
+
+```css
+p {
+color: black;
+}
+
+.pTagStyle {
+  color: green;
+}
+
+#pID {
+  colir: red;
+}
+
+```
+
+ ```css
+p.p1{ 
+color: grey;
+} 
+
+ ```
+
+- Alle Ps doe die Klasse p1 haben
+
+  - achtung Stellung!! Wenn p{...} davor, dann wir das was in p{} steht angewandt
+
+  - Besser h1.p{ } verwenden
+
+- Es können auch mehrer Klassen auf ein Element zuweisen
+
+  ```html
+  <p class " p1 para1" = ></p>
+  ```
+
+- ```css
+  .p1{
+  color: red
+  }
+  .para1{
+  background: black;
+  }
+  ```
+
+  - Ansprechen mehrer Elemente (Gruppierung)
+
+  - ````css
+    p,h1{
+    color: red;
+    }
+    ````
+
+  - 
+
+  
+
+### Farben:
+
+- rgb( rot Grün Blau) zwischne 0 u 255
+
+```css
+p{color: rgb( 100 54 243); }
+```
+
+- name
+
+- ```css
+  p{color: red; }
+  ```
+
+- ""#"rotrotgrüngrünblaublau zwischen 0 bis  9 - a bis F
+
+- ```css
+  p{color: #04AF5B; }
+  ```
+
+### Background
+
+```css
+body{
+background-image url("");
+background-repeat: no-repeat;
+background-position: cent/ bottom-left/ top-right;
+background-attachment: fixed/scroll;
+}
+```
+
+
+
+### Box-Modell:
+
+```html
+<div id="div1"></div>
+```
+
+
+
+```css
+#div1{
+background-color: red
+}
+```
+
+
+
+## Tipps:
+
 ### Position:
 
 - control K --> shortcut liste
