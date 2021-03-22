@@ -56,7 +56,7 @@ return state
 
 ```
 curl\
-  -X POST -d '{"email":"tester1622@femsense.com","password":"testermtesterm"}'\
+  -X POST -d '{"email":"donot017@gmx.net","password":"donot019!"}'\
  -H "Accept: application/json" \
  -H "Content-Type: application/json" \
 https://app.staging.femsense.com/api/v1/auth/login/
@@ -66,3 +66,9 @@ https://app.staging.femsense.com/api/v1/auth/login/
 
 - Tokken der da rauskommt dann in femsense-capasitor-browser.ts eingeben
 - dann im femsense backend suchen
+
+feature/CalendarBarDesignUpdate
+
+```
+10ca71c5e38657456c4cbe4bafb5e0e5dd1d8411
+```
