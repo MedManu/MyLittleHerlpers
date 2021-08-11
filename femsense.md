@@ -63,6 +63,37 @@ curl\
 https://app.staging.femsense.com/api/v1/auth/login/
 ```
 
+```
+
+curl\
+  -X POST -d '{"email":"todayscreentest@femsense.at","password":"donot019"}'\ 
+ -H "Accept: application/json" \
+ -H "Content-Type: application/json" \
+```
+
+```
+curl\
+  -X POST -d '{"email":"uitestaccount@femsense.at","password":"donot019"}'\
+ -H "Accept: application/json" \
+ -H "Content-Type: application/json" \
+https://app.staging.femsense.com/api/v1/auth/login/
+
+```
+
+```
+curl\
+  -X POST -d '{"email":"e2etests@femsense.com","password":"donot019"}'\
+ -H "Accept: application/json" \
+ -H "Content-Type: application/json" \
+https://app.staging.femsense.com/api/v1/auth/login/
+
+
+```
+
+
+
+
+
 ## Eigener Account
 
 - {"key":"68f01bda117c78c9b1b10389f4f600bfeac531c5"}%    
@@ -78,3 +109,115 @@ https://app.staging.femsense.com/api/v1/auth/login/
 cmd K -> commit
 
 Cmd opt K
+
+feature/CalendarBarDesignUpdate
+
+feature/todayScreenNoCycleFound
+
+### d721739bfdc383460077f400842d8aedf456e3ac
+
+ react-app-rewired
+
+Android release pwd:
+
+### Ios chash löschen:
+
+ rm -rf /Users/mamed/Library/Developer/Xcode/DerivedData/
+
+## Femsense preview side
+
+PR --> actions --> CI --> Run Workflow --> Branch auswählen --> false u. True --> Run workflow
+
+```
+https://latest.femsense.preview.steadysense.at/#/InstructionsForUse
+```
+
+![Screenshot 2021-04-13 at 14.25.27](Typora_pics/Screenshot 2021-04-13 at 14.25.27.png)
+
+```
+76d2425a7be5b98b95d6c86f61f93bd36e822705
+```
+
+### Native code in x-Platform verwenden
+
+- Femsesne-capacitor:
+
+  - Name der Funktion hinzufügen
+
+  ```json
+  type NativeOp =
+    | "SAVE_AUTH_TOKEN"
+    | "FINISH_BODY_PROFILE"
+    | "LOGOUT"
+    | "REFRESH_BACKEND"
+    | "CONTACT_SUPPORT"
+    | "SWITCH_ENDPOINT"
+    | "REGISTER_PUSH_NOTIFICATIONS";
+  ```
+
+- Funktion erstellen mit doNativOp
+
+  ```react
+  export function registerPushNotification() {
+    doNativeOp({ nativeOp: "REGISTER_PUSH_NOTIFICATIONS" });
+  }
+  ```
+
+- X-Platform: Constructor in der Klasse erstellen u function aufrufen
+
+  ```react
+  import { registerPushNotification } from "../femsense-capacitor/femsense-capacitor";
+  
+  export class TabToday extends React.Component<RouteComponentProps> {
+    constructor(props: RouteComponentProps) {
+      super(props);
+      registerPushNotification();
+    }
+  ```
+
+  
+
+- Im Native Code von FemSenseCapacitor.swift unter doNativeCall:
+
+  ```swift
+      @objc func doNativeCall(_ call: CAPPluginCall) {
+          guard let nativeOp: String = call.getString("nativeOp") else {
+              return rejectWithError(call, "Missing nativeOp")
+          }
+          DispatchQueue.main.async {
+              if nativeOp == "REFRESH_BACKEND" {
+                  self.refreshBackend()
+              } else if nativeOp == "CONTACT_SUPPORT" {
+                  self.sendContactMailOrOpenWebsite(mailComposeDelegate: self)
+              } else if nativeOp == "SAVE_AUTH_TOKEN" {
+                  self.saveAuthToken(call: call)
+              } else if nativeOp == "FINISH_BODY_PROFILE" {
+                  self.finishBodyProfile(call: call)
+              } else if nativeOp == "LOGOUT" {
+                  self.doLogout()
+              } else if nativeOp == "SWITCH_ENDPOINT" {
+                  self.saveEndpoint(call: call)
+                  self.doLogout()
+              } else if nativeOp == "REGISTER_PUSH_NOTIFICATIONS" {
+                  self.registerPushNotification()
+              } else {
+                  return self.rejectWithError(call, "Unknown nativeOp " + nativeOp)
+              }
+          }
+          call.resolve()
+      }
+  ```
+
+  
+
+- Und auch eigentliche Funktion schreiben
+
+  ```swift
+    func registerPushNotification() {
+          UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (_, _) in
+              print("registerPushNotification (isGranted)")
+           }
+          }
+  ```
+
+  ![Screenshot 2021-08-04 at 11.51.01](../../../Library/Application Support/typora-user-images/Screenshot 2021-08-04 at 11.51.01.png)
