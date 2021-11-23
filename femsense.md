@@ -1,9 +1,15 @@
+#Login
+
+Manuel.medwed@steadysense.at
+
+Manu1622!#
+
 ## Crossplatform auf Handy:
 
 - In capacitor.config.json in main root:
 
 ```
-"server": {"url": " http://192.168.0.24:3000"}
+"server": {"url": "http://192.168.0.24:3000"}
 ```
 
 - Path for Android: `android/app/src/main/assets/capacitor.config.json`
@@ -221,3 +227,137 @@ https://latest.femsense.preview.steadysense.at/#/InstructionsForUse
   ```
 
   ![Screenshot 2021-08-04 at 11.51.01](../../../Library/Application Support/typora-user-images/Screenshot 2021-08-04 at 11.51.01.png)
+
+
+
+# Android Studio WebVev-Debugger Live-Load
+
+- In WebView.java
+
+  ```
+  @NativePlugin()
+  public static void setWebContentsDebuggingEnabled (boolean enabled){
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+      WebView.setWebContentsDebuggingEnabled(true);
+    }
+  }
+  ```
+
+## iOS Studio WebVev-Debugger Live-Load
+
+in capacitor.config.json add
+
+```
+"server": {
+    "url": "http://localhost:3000",
+    "cleartext": true
+  }
+```
+
+
+
+
+
+## CC
+
+<!---
+project-id: " "
+
+template-title: Change Control Request
+template-identifier: FB_3.1_01
+template-version: 8
+template-author: Alexander Adelmann
+template-creation-date: 2020-08-12
+template-reviewer: Werner Koele
+template-review-date: 2020-08-12
+template-approver: Werner Koele
+template-approval-date: 2020-08-12
+--->
+
+# Change Control Request `CC-392`
+
+Link to PB 3.1 04 Change Control: https://github.com/steadysense/SteadySense/blob/master/QM-documents/3.1_Qualitäts_Mgt_IT/PB_3.1_04_Change_Control.md
+
+# Part A
+
+## Cause
+
+- Local-Notification are not send to users in iOS
+
+## Description
+
+- Update app to ask for permission to send Push-Notifications
+
+| Product Name       | SW   | SW-Version | Comments            |
+| ------------------ | ---- | ---------- | ------------------- |
+| femSense Fertility | App  | v2.01      | Local Notifications |
+
+# Part B
+
+## Type of Change Control
+
+Guideline: https://github.com/steadysense/SteadySense/wiki/Significant-Change---Guidance
+
+| Change Number (See Guidance)                            | Description of the Change                                   | Regulation (FDA/MDR) | Comment |
+| ------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ------- |
+| Changes that do not have to be reported - 5 (Bug fixes) | Update app to ask for permission to send Push-Notifications | FDA/MDR              |         |
+
+  - [ ] **Significant Change (Notifiable)**
+  - [x] **Non-Significant Change**
+
+## Documentation
+
+> Check affected areas and list all changes including the related documents here.
+
+**Affected areas:**
+
+  - [ ] Intended Use
+  - [x] Specifications
+  - [ ] Risk Management
+  - [ ] Usability Engineering
+  - [ ] Clinical Evaluation
+  - [x] Product delevopment files (=project folder), design history file, design history record
+  - [ ] Contracts
+  - [ ] Conformity assessment or declaration of conformity
+  - [ ] Other: 
+
+| Description of Change | Affected Document(s)                          | Responsible |
+| --------------------- | --------------------------------------------- | ----------- |
+| Test-Specification    | https://github.com/steadysense/Fem04/pull/100 | @MedManu    |
+| Test-Protocol         | https://github.com/steadysense/Fem04/pull/100 | @MedManu    |
+| Traceability_Matrix   | https://github.com/steadysense/Fem04/pull/100 | @MedManu    |
+| App update            |                                               | @MedManu    |
+
+## Timeline
+
+ KW 32: implementation + tests + release
+
+## Costs
+
+1 developer week
+
+## Responsibilities
+
+- Department representative: @wkoele
+- Quality management representative: @AlexAdelmann
+- Project Manager: @kstrohma
+
+| Release of SW-Version | Date |
+| --------------------- | ---- |
+|                       |      |
+
+# Part C
+
+## Plan - Effectivity
+
+> Insert the plan for the review of effectiveness (including a timeline) here after implementation is finished and reviewed.
+
+## Verification -Effectivity
+
+> Insert the proof of effectiveness here.
+
+
+
+
+
+ http://localhost:8080
