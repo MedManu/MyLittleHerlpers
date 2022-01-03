@@ -710,7 +710,7 @@ Wenn render() Funktion länger braucht als unser setState() kann es zufehlern ko
           shirtSize: event.target.value,
         });
       }
-    
+      
     <select
               value={this.state.shirtSize}
               onChange={this.handleShirtSizeChange}
