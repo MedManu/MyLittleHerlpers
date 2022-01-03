@@ -1,5 +1,13 @@
 # CSS-Tricks and helper
 
+## Maßeinheiten
+
+| px Pixel  | Absolut / Relativ Ein Pixel beschreibt die kleinste Ausgabeeinheit eines Monitors und ist relativ von Ausgabegerät zu Ausgabegerät. Auf den einzelnen Monitor bezogen ist die Angabe von Pixeln ein absolutes Maß. Pixel sind ein geeignetes Maß, um Schriftgrößen und die Abmessungen von Elementen für den Monitor festzulegen. Pixel sind unabhängig von der CSS-Kaskade. |
+| --------- | ------------------------------------------------------------ |
+| em EMS    | Relativ bezieht sich auf die Schriftgröße eines Elements. Für ein flexibles Layout, dass sich anpasst, wenn der Benutzer die Schriftgröße im Browserfenster ändert, ist em als Maßeinheit für Schriften und Layout-Boxen besser geeignet als Pixel. em reagiert auf die CSS-Kaskade. |
+| ex EX     | Relativ wie EMS, aber ex steht für die Größe des Kleinbuchstabens in einem Element – i.d.R. also etwa die Hälfte von em. |
+| % Prozent | Relativ Prozentangaben eignen sich besonders gut für die Ausgabe auf dem Monitor, wenn Layoutelemente an verschiedene Monitorgrößen angepaßt werden sollen. |
+
 ## Rangliste:
 
 - Tag < class < id
@@ -454,6 +462,44 @@ return (
   );
 };
 ```
+
+
+
+### gradient border
+
+```css
+#help{
+    background: white;
+    color: #333333;
+    padding: 2rem;
+}
+
+#help-border-wrap {
+    margin: auto 0.2em auto 0.2em;
+    padding: 0.3rem;
+    position: relative;
+    background: linear-gradient(90deg,#be4b91 15%, #f0879b 50%, #fabe96 80%);
+    position: relative;
+}
+```
+
+## Text neben Bild
+
+<img></img> text
+
+```css
+ vertical-align: middle;
+```
+
+oder
+
+<img></img><p></p>
+
+```
+float: left;
+```
+
+
 
 ## Diverses
 

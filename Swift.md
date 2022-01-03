@@ -2,6 +2,78 @@
 
 
 
+## Variablen
+
+- let = wenn Variable sich verändern kann während der Laufzeit
+
+- var = wenn Variable gleich bleibt
+
+#### Variable und String ausgeben
+
+```swift
+let output = "Deine Domainname ist: \(benutzerInput)"
+```
+
+
+
+## Zuweisen von Werten
+
+```swift
+var x = 10
+var y = 5
+var z = y
+
+if z == y { // == überprüft ob gleich
+    print(z)
+}
+ var abc = 2
+abc += 4 // abc = abc + 4 ner wert wird gleich zugewiesen
+abc -= 1
+```
+
+
+
+### Increment++ und Dekrement--
+
+- ++variable --> Wert erhgöt u dann ausgelesen
+- variable++ variable ausgelesen und dann erhöht 
+
+
+
+### Switch - Statement
+
+Beuioeht sich auf den Weer
+
+```swift
+var tor = 3
+
+switch tor {
+case 1:
+    print("Auto gewonne")
+case 2:
+    print("Küche gewonnen")
+case 3:
+    print("Zonk")
+default:
+    print("Unmbekannt")
+}
+
+var name = "Manu"
+
+switch name {
+case "Manu":
+    print("\(name) hat Auto gewonne")
+case "Alex":
+    print("\(name) hat Küche gewonnen")
+case "Felix":
+    print("\(name) hat den Zonk gezogen")
+default:
+    print("\(name) Unmbekannt")
+}
+```
+
+
+
 ## Structs
 
 - einfacher als Klassen, gibt keine Vererbung
@@ -202,3 +274,14 @@ if let adresse = person1.adresse {
 
 ```
 
+
+
+## Pushnotifications
+
+
+
+
+
+## DiesDas
+
+cmd + shift + / = Zeile auskommentieren
