@@ -520,3 +520,42 @@ float: left;
 
 
 
+### Hamburger- Menu icon
+
+
+
+.hamburger-menu {
+
+width: 35px;
+
+​    height: 30px;
+
+​    position: fixed;
+
+​    top: 40px;
+
+​    right: 10px;
+
+​    //background-color: red;
+
+​    cursor: pointer;
+
+​    display: flex;
+
+​    flex-direction: column;
+
+​    justify-content: space-around;
+
+}
+
+ .mobileNavigation .line{
+
+​    width: 70%;
+
+​    height: 2px;
+
+​    background-color: #565656;
+
+
+
+  }
